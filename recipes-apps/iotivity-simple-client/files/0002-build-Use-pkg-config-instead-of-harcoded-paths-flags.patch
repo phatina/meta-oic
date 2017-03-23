@@ -1,0 +1,44 @@
+From e921054070b32c6c2ec35742622b3029f323edee Mon Sep 17 00:00:00 2001
+From: Philippe Coval <philippe.coval@osg.samsung.com>
+Date: Thu, 23 Mar 2017 18:36:35 +0100
+Subject: [PATCH 2/2] build: Use pkg-config instead of harcoded paths/flags
+
+Bug: https://jira.iotivity.org/browse/IOT-1111
+Change-Id: Ic742607a9cc90430c0ff5336ee75b88d99fa6f51
+Origin: https://github.com/TizenTeam/meta-oic
+Signed-off-by: Philippe Coval <philippe.coval@osg.samsung.com>
+---
+ Makefile | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 2389f43..d512841 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,7 @@
+-YOCTOCXXFLAGS=-I$(PKG_CONFIG_SYSROOT_DIR)/usr/include/iotivity/resource/ -I$(PKG_CONFIG_SYSROOT_DIR)/usr/include/iotivity/resource/stack -I$(PKG_CONFIG_SYSROOT_DIR)/usr/include/iotivity/resource/ocrandom -I$(PKG_CONFIG_SYSROOT_DIR)/usr/include/iotivity/resource/logger -I$(PKG_CONFIG_SYSROOT_DIR)/usr/include/iotivity/resource/oc_logger
+-
+-YOCTOLDFLAGS=-loc -loctbstack -loc_logger 
++PKG_CONFIG?=pkg-config
++CXXFLAGS+=-std=c++0x
++CXXFLAGS+=$(shell $(PKG_CONFIG) iotivity --cflags)
++LDFLAGS+=$(shell $(PKG_CONFIG) iotivity --libs)
+ 
+ all: simpleclient
+ 
+@@ -9,10 +10,10 @@ ifeq ($(PKG_CONFIG_SYSROOT_DIR),)
+ 	echo "Error: Yocto cross-toolchain environment not initialized"
+ 	exit 1 
+ endif
+-	$(CXX) -std=c++0x -c -o $@ $< $(YOCTOCXXFLAGS)
++	$(CXX) -c -o $@ $< $(CXXFLAGS)
+ 
+ simpleclient: simpleclient.o
+-	$(CXX) -o $@ $^ $(LDFLAGS) $(YOCTOLDFLAGS)
++	$(CXX) -o $@ $^ $(LDFLAGS)
+ 
+ clean:
+ 	rm -rf simpleclient *.o
+-- 
+1.9.1
+
