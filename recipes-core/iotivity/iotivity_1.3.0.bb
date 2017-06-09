@@ -1,5 +1,5 @@
 #TODO
-PR = "r0"
+PR = "r01"
 SUMMARY = "IoTivity framework and SDK sponsored by the Open Connectivity Foundation."
 DESCRIPTION = "IoTivity is an open source software framework enabling seamless device-to-device connectivity to address the emerging needs of the Internet of Things."
 HOMEPAGE = "https://www.iotivity.org/"
@@ -16,6 +16,7 @@ SRC_URI = "git://github.com/iotivity/iotivity.git;destsuffix=${S};branch=${branc
 #{ TODO
 #branch_iotivity = "master"
 SRCREV = "${branch_iotivity}"
+SRCREV = "1.3.0"
 #} TODO
 
 url_tinycbor = "git://github.com/01org/tinycbor.git"
