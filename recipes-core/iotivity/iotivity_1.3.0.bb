@@ -16,7 +16,7 @@ SRC_URI = "git://github.com/iotivity/iotivity.git;destsuffix=${S};branch=${branc
 #{ TODO
 #branch_iotivity = "master"
 SRCREV = "${branch_iotivity}"
-SRCREV = "1.3.0"
+SRCREV = "eed0dcd1c5f19ffd2981ae6af77f34b7773cd11f"
 #} TODO
 
 url_tinycbor = "git://github.com/01org/tinycbor.git"
