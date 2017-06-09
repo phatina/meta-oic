@@ -59,7 +59,7 @@ python () {
     # Aligned to default configuration, but features can be changed here (at your own risk):
     # EXTRA_OESCONS += " -j1"
     # EXTRA_OESCONS += " ROUTING=GW"
-    # EXTRA_OESCONS += " SECURED=0"
+    EXTRA_OESCONS += " SECURED=0"
     # EXTRA_OESCONS += " TCP=1"
     d.setVar("EXTRA_OESCONS", EXTRA_OESCONS)
 }
