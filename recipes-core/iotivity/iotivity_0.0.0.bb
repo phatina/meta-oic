@@ -1,3 +1,7 @@
+# TODO:
+# grep iotivity build/conf/local.conf
+# PREFERRED_VERSION_iotivity="0.0.0"
+
 SUMMARY = "IoTivity framework and SDK sponsored by the Open Connectivity Foundation."
 DESCRIPTION = "IoTivity is an open source software framework enabling seamless device-to-device connectivity to address the emerging needs of the Internet of Things."
 HOMEPAGE = "https://www.iotivity.org/"
